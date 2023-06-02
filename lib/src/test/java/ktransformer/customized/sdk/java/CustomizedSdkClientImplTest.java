@@ -1,2 +1,5 @@
-package ktransformer.customized.sdk.java;public class CustomizedSdkClientImplTest {
+package ktransformer.customized.sdk.java;
+
+public class CustomizedSdkClientImplTest {
+
 }

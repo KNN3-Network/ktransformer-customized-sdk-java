@@ -43,6 +43,7 @@ public class CustomizedSdkClientImpl implements CustomizedSdkClient {
         final Request httpRequest = new Request.Builder()
                 .url(url)
                 .addHeader("Content-Type", "application/json")
+                .addHeader("api-key", this.apiKey)
                 .build();
 
         final Call call = client.newCall(httpRequest);
