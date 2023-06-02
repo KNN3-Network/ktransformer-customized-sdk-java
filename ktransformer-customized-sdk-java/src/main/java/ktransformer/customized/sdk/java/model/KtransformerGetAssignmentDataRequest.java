@@ -7,7 +7,7 @@ import javax.annotation.Nullable;
 
 @Data
 @Builder
-public class GetAssignmentDataRequest {
+public class KtransformerGetAssignmentDataRequest {
     private String assignmentId;
     @Nullable
     private String previousExecutionId;

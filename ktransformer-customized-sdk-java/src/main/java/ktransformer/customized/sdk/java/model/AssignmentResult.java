@@ -7,10 +7,9 @@ import java.util.List;
 import java.util.Map;
 
 @AllArgsConstructor
-@Getter
-@Setter
+@NoArgsConstructor
+@Data
 @Builder
-@ToString
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class AssignmentResult {
     private List<Map<String, Object>> data;

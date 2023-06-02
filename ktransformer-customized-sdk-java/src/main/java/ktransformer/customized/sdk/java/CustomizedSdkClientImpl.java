@@ -3,14 +3,13 @@ package ktransformer.customized.sdk.java;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import ktransformer.customized.sdk.java.exception.CustomizedSdkClientError;
 import ktransformer.customized.sdk.java.model.AssignmentResult;
-import ktransformer.customized.sdk.java.model.GetAssignmentDataRequest;
+import ktransformer.customized.sdk.java.model.KtransformerGetAssignmentDataRequest;
 import okhttp3.*;
 
 import java.io.IOException;
 
 public class CustomizedSdkClientImpl implements CustomizedSdkClient {
-    // ../assignment/{assignmentId}/data
-    private static final String GET_ASSIGNMENT_RESULT_API_BASE_URL = "https://transformer.api.knn3.xyz/api/customizedSdk";
+    private static final String GET_ASSIGNMENT_RESULT_API_BASE_URL = "https://transformer.api.staging.knn3.xyz/api/customizedApi";
     private static final String DEFAULT_PAGESIZE = "50";
     private final String apiKey;
     private final OkHttpClient client;
@@ -23,7 +22,7 @@ public class CustomizedSdkClientImpl implements CustomizedSdkClient {
     }
 
     @Override
-    public AssignmentResult getAssignmentResult(final GetAssignmentDataRequest request) {
+    public AssignmentResult getAssignmentResult(final KtransformerGetAssignmentDataRequest request) {
         final HttpUrl.Builder urlBuilder = HttpUrl
                 .parse(GET_ASSIGNMENT_RESULT_API_BASE_URL + "/assignment/" + request.getAssignmentId() + "/data")
                 .newBuilder();
@@ -50,7 +49,7 @@ public class CustomizedSdkClientImpl implements CustomizedSdkClient {
         try {
             final Response response = call.execute();
             if (!response.isSuccessful() || null == response.body()) {
-                throw new CustomizedSdkClientError("Failed to query assignment data, error: " + (null == response.body() ? response.message() : response.body().toString()));
+                throw new CustomizedSdkClientError("Failed to query assignment data, error code: " + response.code());
             }
 
             return this.objectMapper.readValue(response.body().bytes(), AssignmentResult.class);
