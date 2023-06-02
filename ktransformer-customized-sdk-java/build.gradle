@@ -10,7 +10,11 @@ plugins {
     // Apply the java-library plugin for API and implementation separation.
     id 'java-library'
     id "io.freefair.lombok" version "8.0.1"
+    id 'maven-publish'
 }
+
+group 'xyz.knn3.ktransformer'
+version '0.0.1'
 
 repositories {
     // Use Maven Central for resolving dependencies.
@@ -35,4 +39,22 @@ dependencies {
 tasks.named('test') {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
+}
+
+publishing {
+    publications {
+        myLib(MavenPublication) {
+            from components.java
+        }
+    }
+    repositories {
+        maven {
+            name = "MyRepo" //  optional target repository name
+            url = "http://my.org.server/repo/url"
+            credentials {
+                username = 'alice'
+                password = 'my-password'
+            }
+        }
+    }
 }
