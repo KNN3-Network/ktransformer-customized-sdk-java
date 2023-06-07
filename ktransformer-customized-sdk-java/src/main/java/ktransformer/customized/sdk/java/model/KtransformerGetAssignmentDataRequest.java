@@ -5,6 +5,9 @@ import lombok.Data;
 
 import javax.annotation.Nullable;
 
+/**
+ * Data model for the get data request.
+ */
 @Data
 @Builder
 public class KtransformerGetAssignmentDataRequest {

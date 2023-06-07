@@ -9,7 +9,7 @@ import okhttp3.*;
 import java.io.IOException;
 
 public class CustomizedSdkClientImpl implements CustomizedSdkClient {
-    private static final String GET_ASSIGNMENT_RESULT_API_BASE_URL = "https://transformer.api.staging.knn3.xyz/api/customizedApi";
+    private static final String GET_ASSIGNMENT_RESULT_API_BASE_URL = "https://knn3-gateway.knn3.xyz/transformer/api/customizedApi";
     private static final String DEFAULT_PAGESIZE = "50";
     private final String apiKey;
     private final OkHttpClient client;
@@ -42,7 +42,7 @@ public class CustomizedSdkClientImpl implements CustomizedSdkClient {
         final Request httpRequest = new Request.Builder()
                 .url(url)
                 .addHeader("Content-Type", "application/json")
-                .addHeader("api-key", this.apiKey)
+                .addHeader("auth-key", this.apiKey)
                 .build();
 
         final Call call = client.newCall(httpRequest);

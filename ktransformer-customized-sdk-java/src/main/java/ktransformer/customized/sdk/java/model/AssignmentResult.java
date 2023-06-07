@@ -6,6 +6,9 @@ import lombok.*;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * The data model for pulled data.
+ */
 @AllArgsConstructor
 @NoArgsConstructor
 @Data

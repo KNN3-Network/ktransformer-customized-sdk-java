@@ -11,6 +11,15 @@ plugins {
     id 'java-library'
     id "io.freefair.lombok" version "8.0.1"
     id 'maven-publish'
+    id 'signing'
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src']
+        }
+    }
 }
 
 group 'xyz.knn3.ktransformer'
@@ -19,6 +28,12 @@ version '0.0.1'
 repositories {
     // Use Maven Central for resolving dependencies.
     mavenCentral()
+    maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+}
+
+java {
+    withJavadocJar()
+    withSourcesJar()
 }
 
 dependencies {
@@ -45,18 +60,80 @@ tasks.named('test') {
 
 publishing {
     publications {
-        myLib(MavenPublication) {
+
+        mavenJava(MavenPublication) {
+
+            groupId = 'xyz.knn3.ktransformer'
+            artifactId = 'ktransformer-customized-sdk-java'
+            version = '1.0.0'
             from components.java
+
+            pom {
+                name = 'Ktransformer customized sdk'
+                description = 'Ktransformer customized sdk is a library provided by Knn3 team to help you easily ' +
+                        'integrate Knn3 public Apis to pull your customized work flow data.'
+                url = 'https://github.com/KNN3-Network/ktransformer-customized-sdk-java'
+                inceptionYear = '2023'
+
+                licenses {
+                    license {
+                        name = 'MIT License'
+                        url = 'https://opensource.org/licenses/MIT'
+                    }
+                }
+                developers {
+                    developer {
+                        id = 'HaonanXu'
+                        name = 'Harry Xu'
+                        email = 'xhn0701@gmail.com'
+                    }
+                }
+                scm {
+                    connection = 'scm:git:git:github.com:KNN3-Network/ktransformer-customized-sdk-java.git'
+                    developerConnection = 'scm:git:ssh://github.com/HaonanXu/ktransformer-customized-sdk-java.git'
+                    url = 'https://github.com/KNN3-Network/ktransformer-customized-sdk-java'
+                }
+            }
         }
     }
+
     repositories {
         maven {
-            name = "MyRepo" //  optional target repository name
-            url = "http://my.org.server/repo/url"
+            name = "OSSRH"
+            url = "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
             credentials {
-                username = 'alice'
-                password = 'my-password'
+                username = project.properties["username"]
+                password = project.properties["password"]
             }
         }
     }
 }
+
+signing {
+    sign publishing.publications.mavenJava
+}
+
+
+javadoc {
+    if (JavaVersion.current().isJava9Compatible()) {
+        options.addBooleanOption('html5', true)
+    }
+}
+
+//publishing {
+//    publications {
+//        myLib(MavenPublication) {
+//            from components.java
+//        }
+//    }
+//    repositories {
+//        maven {
+//            name = "MyRepo" //  optional target repository name
+//            url = "http://my.org.server/repo/url"
+//            credentials {
+//                username = 'alice'
+//                password = 'my-password'
+//            }
+//        }
+//    }
+//}
