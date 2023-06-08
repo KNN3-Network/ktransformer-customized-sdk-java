@@ -17,7 +17,7 @@ implementation 'xyz.knn3.ktransformer:ktransformer-customized-sdk-java:1.0.1'
 ```
 
 # How to use
-1. Register on [K.Transformer]([url](https://transformer.knn3.xyz/)) or contact us at builder@knn3.xyz
+1. Register on [K.Transformer](https://transformer.knn3.xyz/) or contact us at builder@knn3.xyz
 2. Prepare your data with AI or SQL template
 3. Convert your data into API following workflow guide and submit as an assignment
 4. Create an API Key for Customized API
