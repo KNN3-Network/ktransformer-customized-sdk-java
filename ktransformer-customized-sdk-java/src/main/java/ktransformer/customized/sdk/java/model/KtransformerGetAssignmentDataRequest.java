@@ -4,6 +4,7 @@ import lombok.Builder;
 import lombok.Data;
 
 import javax.annotation.Nullable;
+import java.util.Map;
 
 /**
  * Data model for the get data request.
@@ -17,4 +18,6 @@ public class KtransformerGetAssignmentDataRequest {
     @Nullable
     private String nextToken;
     private Integer pageSize;
+    @Nullable
+    private Map<String, String> sqlParams;
 }

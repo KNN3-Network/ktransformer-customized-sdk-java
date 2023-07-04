@@ -1,4 +1,4 @@
-package ktransformer.customized.sdk.java;
+package main.java.ktransformer.customized.sdk.java;
 
 import ktransformer.customized.sdk.java.model.AssignmentResult;
 import ktransformer.customized.sdk.java.model.KtransformerGetAssignmentDataRequest;

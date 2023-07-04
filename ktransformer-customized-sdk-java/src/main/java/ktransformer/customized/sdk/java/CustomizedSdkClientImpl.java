@@ -1,4 +1,4 @@
-package ktransformer.customized.sdk.java;
+package main.java.ktransformer.customized.sdk.java;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import ktransformer.customized.sdk.java.exception.CustomizedSdkClientError;
@@ -31,6 +31,9 @@ public class CustomizedSdkClientImpl implements CustomizedSdkClient {
         }
         if (null != request.getNextToken()) {
             urlBuilder.addQueryParameter("nextToken", request.getNextToken());
+        }
+        if (null != request.getSqlParams()) {
+            request.getSqlParams().forEach(urlBuilder::addQueryParameter);
         }
         if (null == request.getPageSize()) {
             urlBuilder.addQueryParameter("pageSize", DEFAULT_PAGESIZE);
