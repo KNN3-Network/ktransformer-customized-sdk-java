@@ -65,7 +65,7 @@ publishing {
 
             groupId = 'xyz.knn3.ktransformer'
             artifactId = 'ktransformer-customized-sdk-java'
-            version = '1.0.1'
+            version = '1.0.2'
             from components.java
 
             pom {
