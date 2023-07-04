@@ -1,8 +1,11 @@
 # ktransformer-customized-sdk-java
-This is a Java SDK that Knn3 team create for conviniently retrieve your customized workflow data.
+This is a Java SDK that K.Transformer team created to retrieve your customized data.
 
+# Install
 ## install with gradle
-`	implementation 'xyz.knn3.ktransformer:ktransformer-customized-sdk-java:1.0.0'`
+```
+implementation 'xyz.knn3.ktransformer:ktransformer-customized-sdk-java:1.0.1'
+```
 
 ## install with maven
 ```
@@ -13,7 +16,14 @@ This is a Java SDK that Knn3 team create for conviniently retrieve your customiz
 </dependency>
 ```
 
-## usage
+# How to use
+1. Register on [K.Transformer](https://transformer.knn3.xyz/) or contact us at builder@knn3.xyz
+2. Prepare your data with AI or SQL template
+3. Convert your data into API following workflow guide and submit as an assignment
+4. Create an API Key for Customized API
+5. View your code from Account/Service Control/Lambda-style Workflow
+6. Obtain the data
+
 ```
 import ktransformer.customized.sdk.java.CustomizedSdkClientImpl;
 import ktransformer.customized.sdk.java.model.AssignmentResult;
