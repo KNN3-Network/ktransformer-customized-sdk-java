@@ -4,7 +4,7 @@ This is a Java SDK that K.Transformer team created to retrieve your customized d
 # Install
 ## install with gradle
 ```
-implementation 'xyz.knn3.ktransformer:ktransformer-customized-sdk-java:1.0.1'
+implementation 'xyz.knn3.ktransformer:ktransformer-customized-sdk-java:1.0.2'
 ```
 
 ## install with maven
@@ -12,7 +12,7 @@ implementation 'xyz.knn3.ktransformer:ktransformer-customized-sdk-java:1.0.1'
 <dependency>
     <groupId>xyz.knn3.ktransformer</groupId>
     <artifactId>ktransformer-customized-sdk-java</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.2</version>
 </dependency>
 ```
 
@@ -31,9 +31,16 @@ import ktransformer.customized.sdk.java.model.KtransformerGetAssignmentDataReque
 
 public static void main(String args[]) {
     CustomizedSdkClientImpl client = new CustomizedSdkClientImpl("{api-key}");
+    
+    // add your sql parameters
+    Map<String, String> sqlParams = new HashMap<>();
+    sqlParams.put("key1", "value1");
+    sqlParams.put("key2", "value2");
+    
     AssignmentResult res = client.getAssignmentResult(KtransformerGetAssignmentDataRequest.builder()
                         .assignmentId("{assignment-id}")
                         .pageSize(10) // default 50
+                        .sqlParams(sqlParams)
                 .build());
 }
 
