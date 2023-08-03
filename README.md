@@ -45,3 +45,7 @@ public static void main(String args[]) {
 }
 
 ```
+## pagination
+1. You can choose the pagesize in your requests. The default pagesize is 100, and the max is 1000.
+2. Each response contains `nextToken` that indicates the offset of the first element on the next page. If its value is null that means no more data.
+3. To pull more data you will need to add 2 more query parameters in your request. One is the above-mentioned `nextToken`, the other is the `previousExecutionId` whose value should be the `queryId` returned in the previous response.
